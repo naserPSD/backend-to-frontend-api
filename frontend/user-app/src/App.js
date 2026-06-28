@@ -1,27 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 const App = () => {
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
 
   const getUser = () => {
     fetch("/api/user")
-      .then(res => res.json())       
-      .then(json => 
-        setUser(json)
-      )
-  }
+      .then((res) => res.json())
+      .then((json) => setUser(json));
+  };
 
   useEffect(() => {
-    getUser()
-  }, [])
+    getUser();
+  }, []);
 
   return (
     <div>
-     {user.map((data)=>{
-      return <h1>{data.title}</h1>
-     })}
+      {user.map((data) => {
+        return <li key={data.id}>{data.title}</li>;
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
